@@ -35,35 +35,27 @@ public class FPSController : MonoBehaviour
     {
         Vector3 forward = RecalculateMoveDirection(Vector3.forward);
         Vector3 right = RecalculateMoveDirection(Vector3.right);
-        float curSpeedX = canMove ? walkingSpeed * Input.GetAxis("Vertical") : 0;
-        float curSpeedY = canMove ? walkingSpeed * Input.GetAxis("Horizontal") : 0;
+
+        float curSpeedX = 0;
+        if (canMove) curSpeedX = walkingSpeed* Input.GetAxis("Vertical");
+        float curSpeedY = 0;
+        if (canMove) curSpeedY =  walkingSpeed* Input.GetAxis("Horizontal");
+
         float movementDirectionY = moveDirection.y;
         moveDirection = (forward * curSpeedX) + (right * curSpeedY);
-        if (Input.GetButton("Jump") && canMove && characterController.isGrounded)
-        {
-            moveDirection.y = jumpSpeed;
-        }
-        else
-        {
-            moveDirection.y = movementDirectionY;
-        }
+        if (Input.GetButton("Jump") && canMove && characterController.isGrounded) moveDirection.y = jumpSpeed;
+        else moveDirection.y = movementDirectionY;
+
         Gravity();
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
     }
     void Gravity()
     {
-        // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
-        // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
-        // as an acceleration (ms^-2)
-        if (!characterController.isGrounded)
-        {
-            moveDirection.y -= gravity * Time.deltaTime;
-        }
+        if (!characterController.isGrounded) moveDirection.y -= gravity * Time.deltaTime;
     }
     void CameraRotation()
     {
-        // Player and Camera rotation
         if (canMove)
         {
             rotationX += -Input.GetAxis("Mouse Y") * lookSpeed;
@@ -74,8 +66,6 @@ public class FPSController : MonoBehaviour
     }
     Vector3 RecalculateMoveDirection(Vector3 v)
     {
-        // We are grounded, so recalculate move direction based on axes
         return transform.TransformDirection(v);
-
     }
  }
