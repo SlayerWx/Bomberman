@@ -22,7 +22,7 @@ public class FPSController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
 
        // Lock cursor asAS
-        Cursor.lockState = CursorLockMode.Locked;
+ //       Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
