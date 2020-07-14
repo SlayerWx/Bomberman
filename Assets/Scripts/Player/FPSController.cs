@@ -6,7 +6,7 @@ using UnityEngine;
 public class FPSController : MonoBehaviour
 {
     public float walkingSpeed = 7.5f;
- //   public float jumpSpeed = 8.0f;
+ // public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
     public Camera playerCamera;
     public float lookSpeed = 2.0f;
@@ -23,7 +23,7 @@ public class FPSController : MonoBehaviour
 
        // Lock cursor asAS
  //       Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+ //       Cursor.visible = false;
     }
 
     void Update()
@@ -68,4 +68,8 @@ public class FPSController : MonoBehaviour
     {
         return transform.TransformDirection(v);
     }
- }
+    public bool GetCanMove()
+    {
+        return canMove;
+    }
+}
