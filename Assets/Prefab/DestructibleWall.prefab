@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 473895830550304952}
   - component: {fileID: 473895830550304953}
   - component: {fileID: 473895830550304954}
+  - component: {fileID: 6786053278551477648}
   m_Layer: 0
   m_Name: DestructibleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &473895830550304955
 Transform:
@@ -92,3 +93,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6786053278551477648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473895830550304956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5902f321be9e855478f9af500728baf6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

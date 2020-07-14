@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SplashScreen : MonoBehaviour
 {
     [SerializeField]
-    private float timer;
+    private float timer = 0;
     [SerializeField]
     private GameObject empresa;
     [SerializeField]
@@ -24,7 +24,5 @@ public class SplashScreen : MonoBehaviour
         juego.SetActive(true);
         yield return new WaitForSeconds(timer);
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
-
-
     }
 }
