@@ -16,13 +16,11 @@ public class Explosion : MonoBehaviour
     private Color startColor;
     [SerializeField]
     private GameObject[] particle;
-    bool particleActivate;
     void Start()
     {
         startColor = myMesh.material.color;
         timer = 0;
         StartCoroutine("Secuence");
-        particleActivate = false;
         for (int i = 0; i < particle.Length; i++)
         {
             particle[i].SetActive(false);
@@ -40,7 +38,6 @@ public class Explosion : MonoBehaviour
         }
         if(myMesh.material.color == Color.white) myMesh.material.color = startColor;
         myMesh.enabled = false;
-        particleActivate = true;
         for(int i = 0; i < particle.Length;i++)
         {
             particle[i].SetActive(true);
