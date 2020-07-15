@@ -29,9 +29,16 @@ public class LevelGenerator : MonoBehaviour // asAS
     int probEnemyApearHere;
     [SerializeField]
     int rangeApearEnemy;
+    [SerializeField]
+    Transform enemyContainer;
+    List<GameObject> enemies;
+    public delegate void OpenDoor();
+    public static event OpenDoor OpenedDoor;
     float floorDifToDoor = 0.5f;
     void Start()
     {
+        enemies = new List<GameObject>();
+        EnemyMovement.EnemyDead += ResetID;
         map = new List<GameObject>();
         for(int i = 0; i < col;i++)
         {
@@ -49,16 +56,15 @@ public class LevelGenerator : MonoBehaviour // asAS
         Instantiate(door,aux, Quaternion.identity,transform); 
     }
 
-    private GameObject TargetGenerator(int i,int t)
+    private void TargetGenerator(int i,int t)
     {
-        GameObject w = new GameObject();
         if (probDestructiveWallSpawn > Random.Range(0, 100) &&
                                           (!(i > col - spawnAreaDistance - 1 && t < spawnAreaDistance) &&
                                            !(i > col - spawnAreaDistance - 1 && t > row - spawnAreaDistance - 1) &&
                                            !(i < spawnAreaDistance && t > row - spawnAreaDistance - 1) &&
                                            !(i < spawnAreaDistance && t < spawnAreaDistance)))
         {
-            w = Instantiate(wallPrefab, destructibleWallContainer);
+            GameObject w = Instantiate(wallPrefab, destructibleWallContainer);
             w.transform.position = new Vector3(destructibleWallContainer.position.x + (i * scaleWall),
                                                destructibleWallContainer.position.y,
                                                destructibleWallContainer.position.z + (t * -scaleWall));
@@ -73,13 +79,22 @@ public class LevelGenerator : MonoBehaviour // asAS
                                !(i < spawnAreaDistance && t < spawnAreaDistance)))
         {
             enemycount++;
-            w = Instantiate(enemyPrefab, destructibleWallContainer);
+            GameObject w = Instantiate(enemyPrefab, enemyContainer);
             w.transform.position = new Vector3(destructibleWallContainer.position.x + (i * scaleWall),
                                                destructibleWallContainer.position.y,
                                                destructibleWallContainer.position.z + (t * -scaleWall));
-            Debug.Log("enemy");
+            enemies.Add(w);
+            EnemyMovement e = w.GetComponent<EnemyMovement>();
+            e.SetID();
+            w.name = "Enemy " + e.GetID();
         }
-
-        return w;
+    }
+    void ResetID()
+    {
+        OpenedDoor?.Invoke();
+    }
+    private void OnDisable()
+    {
+        EnemyMovement.EnemyDead -= ResetID;
     }
 }

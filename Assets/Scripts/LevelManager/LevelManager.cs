@@ -7,19 +7,21 @@ public class LevelManager : MonoBehaviour
     public delegate void EndLevel();
     public static event EndLevel EndThisLevel;
     [SerializeField]
-    private int normalOBJPoint;
+    private int normalOBJPunctuation;
     [SerializeField]
-    private int enemyPoint;
+    private int enemyPunctuation;
     [SerializeField]
-    private int doorPoint;
+    private int doorPunctuation;
 
-    public int NormalOBJPoint { get => normalOBJPoint; set => normalOBJPoint = value; }
-    public int EnemyPoint { get => enemyPoint; set => enemyPoint = value; }
-    public int DoorPoint { get => doorPoint; set => doorPoint = value; }
+    public int NormalOBJPunctuation { get => normalOBJPunctuation; set => normalOBJPunctuation = value; }
+    public int EnemyPunctuation { get => enemyPunctuation; set => enemyPunctuation = value; }
+    public int DoorPunctuation { get => doorPunctuation; set => doorPunctuation = value; }
 
     void Start()
     {
-        Dead.PlayerDead += LossCondition;   
+        Dead.PlayerDead += LossCondition;
+        OpenTheDoor.Winner += WinCondition;
+        Time.timeScale = 1.0f;
     }
     void LossCondition()
     {
@@ -27,8 +29,14 @@ public class LevelManager : MonoBehaviour
         EndThisLevel?.Invoke();
 
     }
+    void WinCondition()
+    {
+        Time.timeScale = 0.0f;
+        EndThisLevel?.Invoke();
+    }
     private void OnDisable()
     {
         Dead.PlayerDead -= LossCondition;
+        OpenTheDoor.Winner -= WinCondition;
     }
 }

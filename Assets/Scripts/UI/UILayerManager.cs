@@ -76,7 +76,7 @@ public class UILayerManager : MonoBehaviour
     }
     void PointIncreasDestroyingNormalObj()
     {
-        plPoints.SetPoints(plPoints.GetPoints()+lvlManager.NormalOBJPoint);
+        plPoints.SetPoints(plPoints.GetPoints()+lvlManager.NormalOBJPunctuation);
     }
     void PointIncreasDestroyEnemy()
     {

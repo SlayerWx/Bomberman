@@ -19,9 +19,8 @@ public class Dead : MonoBehaviour
         startPosition = transform.position;
         vulnerable = true;
     }
-    void OnCollisionEnter(Collision col)
+    void OnTriggerEnter(Collider col)
     {
-        
         if(col.gameObject.tag == "Enemy")
         {
             Hitted();
@@ -31,7 +30,7 @@ public class Dead : MonoBehaviour
     {
             Hitted();
     }
-    void Hitted()
+    public void Hitted()
     {
         if (vulnerable)
         {
