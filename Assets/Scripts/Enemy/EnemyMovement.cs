@@ -55,6 +55,10 @@ public class EnemyMovement : MonoBehaviour
                 StartCoroutine("Moving");
             }
         }
+        else if(!imAlive)
+        {
+            StopCoroutine("Moving");
+        }
     }
     public void SetID()
     {

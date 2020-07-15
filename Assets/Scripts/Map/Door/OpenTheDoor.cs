@@ -28,7 +28,6 @@ public class OpenTheDoor : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log(other.gameObject.tag + " " + other.gameObject.name);
         if(open && other.gameObject.tag == "Player")
         {
             Winner?.Invoke();

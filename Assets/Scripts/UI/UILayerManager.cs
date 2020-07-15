@@ -60,6 +60,8 @@ public class UILayerManager : MonoBehaviour
     {
         if (player.GetLife() > 0) winLoss.text = "You Win!";
         else winLoss.text = "You Loss!";
+        EnemyMovement.maxID = 0;
+        EnemyMovement.deadNumber = 1;
         endLayer.SetActive(true);
     }
     void Life()

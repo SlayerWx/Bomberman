@@ -799,9 +799,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 'Move: Arrow''s or ASWD
 
-    Bomb: Space or Click
-
-    Camera: 1 and 2'
+    Bomb: Space or Click'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -870,12 +868,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -106.637695, w: -80.71881}
   m_textInfo:
     textComponent: {fileID: 517246061}
-    characterCount: 58
+    characterCount: 42
     spriteCount: 0
-    spaceCount: 11
-    wordCount: 12
+    spaceCount: 7
+    wordCount: 8
     linkCount: 0
-    lineCount: 3
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
